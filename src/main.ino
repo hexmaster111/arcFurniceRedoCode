@@ -3,6 +3,7 @@
 #include <LiquidCrystal_I2C.h>
 
 const int estopPin = 32;
+const int eStopResetPin = 33;
 
 const int waterPumpPin = 22;
 const int ArgonPin = 23;
@@ -17,11 +18,12 @@ float waterTemp = 000.0; //degf
 float crucableTemp = 000.0; //degf
 float chamberVaccume = 000.0; //mtor
 
-LiquidCrystal_I2C lcd(0x27,20,4);
+LiquidCrystal_I2C lcd(0x27,20,4); //untested
 
-bool estop;
+bool estop = true;
+bool StopPrintedflag = false;
 
-bool debugMode = true;
+bool debugMode = true; //switch this after wireing and testing
 
 void setup() {
   Serial.begin(9600);

@@ -15,9 +15,6 @@ void relayForTime(int pin, bool opp, int time){
 
 
 
-
-
-
 void pinSetup(){
   pinMode(estop, INPUT_PULLUP);
   pinMode(waterPumpPin ,OUTPUT);
