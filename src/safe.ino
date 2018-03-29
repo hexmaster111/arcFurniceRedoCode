@@ -14,16 +14,14 @@ void eStopCheck(){
     digitalWrite(aux          , false);
     estop = true;
     eStopMessage();
-    //Serial.println("estop");
-
   }
 }
 
 
 void checkResetEstop(){ //To reset the eStop after pressing
-  if ((estop == true) && (digitalRead(eStopResetPin))){
+  if ((estop == true) && (digitalRead(eStopResetPin)) && (digitalRead(estopPin))){
       estop = false;
       resetVars();
-      Serial.println("resetVars");
+      Serial.println("Estop Reset!");
   }
 }

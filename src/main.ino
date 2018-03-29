@@ -22,7 +22,7 @@ float chamberVaccume = 000.0; //mtor
 
 LiquidCrystal_I2C lcd(0x27,20,4); //untested
 
-bool estop;
+bool estop = true;//Start Estoped
 bool StopPrintedflag = false;
 
 bool debugMode = true; //switch this after wireing and testing
@@ -33,6 +33,7 @@ void setup() {
   lcd.home();
   lcd.backlight();
   pinSetup();
+  Serial.println("Stared");
 }
 
 void loop() {
