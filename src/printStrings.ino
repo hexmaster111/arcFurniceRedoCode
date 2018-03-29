@@ -1,5 +1,4 @@
 
-
 void eStopMessage(){
   if (StopPrintedflag == 0){
     Serial.println("Estop Pressed!");

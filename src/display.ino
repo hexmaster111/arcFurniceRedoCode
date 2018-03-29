@@ -15,7 +15,3 @@ void statusDisplay(){
   }
   //Here we can put other stuff
 }
-
-void currentSteps(){
-
-}

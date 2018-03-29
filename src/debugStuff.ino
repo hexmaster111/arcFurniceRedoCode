@@ -45,11 +45,3 @@ void checkRelays(){ //turn on and off pins directly according to v 1 relay wirei
     }
   }
 }
-
-void statusLight(){
-  if (estop){
-    digitalWrite(statusLED, HIGH);
-  }else{
-    digitalWrite(statusLED, LOW);
-  }
-}

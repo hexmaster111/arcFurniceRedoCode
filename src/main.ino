@@ -7,6 +7,9 @@ const int versionNumber = 0001;
 const int estopPin = 32;
 const int eStopResetPin = 33;
 
+const int debugKey = 38;
+
+
 const int waterPumpPin = 22;
 const int ArgonPin = 23;
 const int VaccumePin = 24;
@@ -29,22 +32,24 @@ bool StopPrintedflag = false;
 
 bool debugMode = true; //switch this after wireing and testing
 
+bool atVaccume;
+
 void setup() {
   Serial.begin(9600);
   lcd.init();
   lcd.home();
   lcd.backlight();
   pinSetup();
-
   Serial.print("------ Stared version: ");
   Serial.print(versionNumber);
   Serial.println(" ------");
+
 }
 
 void loop() {
     checkResetEstop();
     eStopCheck();  // This function WORKS!!!
-    statusLight(); //to chaing the statusLED when the estopVar changes
-    startPumpDown(); //called when we want to start pumping down, here for debug
+    //startPumpDown(); //called when we want to start pumping down, here for debug
     //checkRelays();
+    startPumpDown();
 }
