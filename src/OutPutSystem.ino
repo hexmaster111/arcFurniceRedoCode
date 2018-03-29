@@ -15,9 +15,6 @@ void relayForTime(int pin, bool opp, int time){
 
 
 
-
-
-
 void pinSetup(){
   pinMode(estop, INPUT_PULLUP);
   pinMode(waterPumpPin ,OUTPUT);
@@ -28,4 +25,5 @@ void pinSetup(){
   pinMode(PumpCutoutPin ,OUTPUT);
   pinMode(arcStartPin ,OUTPUT);
   pinMode(aux, OUTPUT);
+  pinMode(statusLED, OUTPUT);
 }

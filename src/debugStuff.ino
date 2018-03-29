@@ -3,8 +3,8 @@
   int ledPin1 =  12;      // the number of the LED pin
   int ledState1 = LOW;             // ledState used to set the LED
   unsigned long previousMillis1 = 0;        // will store last time LED was updated
-  long OnTime1 = 1;           // milliseconds of on-time
-  long OffTime1 = 2000;          // milliseconds of off-time
+  long OnTime1 = 700;           // milliseconds of on-time
+  long OffTime1 = 700;          // milliseconds of off-time
 
 
 
@@ -43,5 +43,13 @@ void checkRelays(){ //turn on and off pins directly according to v 1 relay wirei
     relayControl(28, false);
     relayControl(29, false);
     }
+  }
+}
+
+void debugLoop(){
+  if (estop){
+    digitalWrite(statusLED, HIGH);
+  }else{
+    digitalWrite(statusLED, LOW);
   }
 }
