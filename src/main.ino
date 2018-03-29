@@ -14,13 +14,15 @@ const int PumpCutoutPin = 27;
 const int arcStartPin = 29;
 const int aux = 28;
 
+const int statusLED = 13;
+
 float waterTemp = 000.0; //degf
 float crucableTemp = 000.0; //degf
 float chamberVaccume = 000.0; //mtor
 
 LiquidCrystal_I2C lcd(0x27,20,4); //untested
 
-bool estop = true;
+bool estop;
 bool StopPrintedflag = false;
 
 bool debugMode = true; //switch this after wireing and testing
@@ -34,6 +36,10 @@ void setup() {
 }
 
 void loop() {
+    checkResetEstop();
     eStopCheck();  // This function WORKS!!!
-    //checkRelays();
+    checkRelays();
+    debugLoop();
+    //Serial.println(estop);
+
 }

@@ -2,7 +2,8 @@ void eStopCheck(){
   if(digitalRead(estopPin) or (estop == true)){
     //were not estoped
     //estop = false;
-  }else{
+    //Serial.println("notEstoped");
+  }else{ //digitalWrite used to force them low, rather then the relay control function
     digitalWrite(waterPumpPin , false);
     digitalWrite(ArgonPin     , false);
     digitalWrite(VaccumePin   , false);
@@ -12,16 +13,17 @@ void eStopCheck(){
     digitalWrite(arcStartPin  , false);
     digitalWrite(aux          , false);
     estop = true;
-    //Serial.println(estop);
+    eStopMessage();
+    //Serial.println("estop");
+
   }
 }
 
 
-void resetEstop(){ //To reset the eStop after pressing
-  if (estop == true){
-    if (digitalRead(!eStopResetPin)){
+void checkResetEstop(){ //To reset the eStop after pressing
+  if ((estop == true) && (digitalRead(eStopResetPin))){
       estop = false;
       resetVars();
-    }
+      Serial.println("resetVars");
   }
 }

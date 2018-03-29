@@ -25,4 +25,5 @@ void pinSetup(){
   pinMode(PumpCutoutPin ,OUTPUT);
   pinMode(arcStartPin ,OUTPUT);
   pinMode(aux, OUTPUT);
+  pinMode(statusLED, OUTPUT);
 }
