@@ -46,7 +46,7 @@ void checkRelays(){ //turn on and off pins directly according to v 1 relay wirei
   }
 }
 
-void debugLoop(){
+void statusLight(){
   if (estop){
     digitalWrite(statusLED, HIGH);
   }else{

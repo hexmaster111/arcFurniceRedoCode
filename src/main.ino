@@ -35,15 +35,16 @@ void setup() {
   lcd.home();
   lcd.backlight();
   pinSetup();
-  Serial.print("Stared version: ");
-  Serial.println(versionNumber);
+
+  Serial.print("------ Stared version: ");
+  Serial.print(versionNumber);
+  Serial.println(" ------");
 }
 
 void loop() {
     checkResetEstop();
     eStopCheck();  // This function WORKS!!!
-    checkRelays();
-    debugLoop();
-    //Serial.println(estop);
-
+    statusLight(); //to chaing the statusLED when the estopVar changes
+    startPumpDown(); //called when we want to start pumping down, here for debug
+    //checkRelays();
 }
