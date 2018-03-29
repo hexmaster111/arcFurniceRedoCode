@@ -46,13 +46,7 @@ void checkRelays(){ //turn on and off pins directly according to v 1 relay wirei
   }
 }
 
-
-
 void debugLoop(){
-  //Serial.println(digitalRead(eStopResetPin));
-  //delay(30);
-
-
   if (estop){
     digitalWrite(statusLED, HIGH);
   }else{

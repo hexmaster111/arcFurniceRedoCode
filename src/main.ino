@@ -2,6 +2,8 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
+const int versionNumber = 0001;
+
 const int estopPin = 32;
 const int eStopResetPin = 33;
 
@@ -33,7 +35,8 @@ void setup() {
   lcd.home();
   lcd.backlight();
   pinSetup();
-  Serial.println("Stared");
+  Serial.print("Stared version: ");
+  Serial.println(versionNumber);
 }
 
 void loop() {
