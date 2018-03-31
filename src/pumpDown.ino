@@ -1,9 +1,22 @@
-void startPumpDown(){
-
-}
-
 int pumpDownSteps[] = {1,2,1,2,3};
 int currentStep = 0;
+
+void startPumpDown(){
+    if (currentStep==0){
+      PumpLoop();
+    }else if(currentStep==1){
+
+    }else if(currentStep==2){
+
+    }else if(currentStep==3){
+
+    }else if(currentStep==4){
+
+    }else if(currentStep==5){
+  }
+}
+
+
 
 
 
@@ -29,15 +42,15 @@ int currentStep = 0;
 // prompet to start and stop welder and start pumpdown
 
 void PumpLoop(){
-
-  if (!atVaccume){
-    PumpLoop();
+  if ((!atVaccume)&&(!estop)){
     relayControl(VaccumePin, true);
     relayControl(PumpCutoutPin, true);
     eStopCheck();
     checkVaccume();
+    PumpLoop();
   }else{
     relayControl(VaccumePin, false);
     relayControl(PumpCutoutPin, false);
+    loop();
   }
 }

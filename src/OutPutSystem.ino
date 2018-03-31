@@ -27,3 +27,10 @@ void pinSetup(){
   pinMode(aux, OUTPUT);
   pinMode(statusLED, OUTPUT);
 }
+
+void lcdSetUp(){
+  Wire.begin();
+  Wire.beginTransmission(0x27);
+  lcd.begin(20, 4); // initialize the lcd and set size
+  lcd.home();lcd.setBacklight(1);
+}

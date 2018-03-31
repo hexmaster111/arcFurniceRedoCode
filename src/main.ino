@@ -1,8 +1,12 @@
 #include <Arduino.h>
 #include <Wire.h>
-#include <LiquidCrystal_I2C.h>
+#include <LiquidCrystal_PCF8574.h>
 
-const int versionNumber = 0001;
+LiquidCrystal_PCF8574 lcd(0x27);  // set the LCD address
+
+
+
+const int versionNumber = 2;
 
 const int estopPin = 32;
 const int eStopResetPin = 33;
@@ -25,7 +29,7 @@ float waterTemp = 000.0; //degf
 float crucableTemp = 000.0; //degf
 float chamberVaccume = 000.0; //mtor
 
-LiquidCrystal_I2C lcd(0x27,20,4); //untested
+
 
 bool estop = true;//Start Estoped
 bool StopPrintedflag = false;
@@ -36,20 +40,20 @@ bool atVaccume;
 
 void setup() {
   Serial.begin(9600);
-  lcd.init();
-  lcd.home();
-  lcd.backlight();
+  lcdSetUp();
   pinSetup();
   Serial.print("------ Stared version: ");
   Serial.print(versionNumber);
   Serial.println(" ------");
+  initMessage();
+
 
 }
 
 void loop() {
     checkResetEstop();
     eStopCheck();  // This function WORKS!!!
-    //startPumpDown(); //called when we want to start pumping down, here for debug
+    startPumpDown(); //called when we want to start pumping down, here for debug
     //checkRelays();
-    startPumpDown();
+    //startPumpDown();
 }

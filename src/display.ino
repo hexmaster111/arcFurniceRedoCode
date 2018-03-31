@@ -15,3 +15,20 @@ void statusDisplay(){
   }
   //Here we can put other stuff
 }
+
+
+
+void initMessage(){
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("ARC Control");
+  lcd.setCursor(0,1);
+  lcd.print("Version:");
+  lcd.setCursor(9,1);
+  lcd.print(versionNumber);
+  lcd.setCursor(9,2);
+  lcd.print("THE SHED");
+  lcd.setCursor(9,3);
+  lcd.print("3/31/18");
+  //delay(5000);
+}
