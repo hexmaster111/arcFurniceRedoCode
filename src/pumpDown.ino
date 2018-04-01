@@ -1,11 +1,8 @@
 
 
 void startPumpDown(){
-    if (currentStep==0){
-      Serial.println("At step zero");
+    if(currentStep==1){
       PumpLoop();
-    }else if(currentStep==1){
-      Serial.println("At step one");
     }else if(currentStep==2){
       Serial.println("at step two");
     }else if(currentStep==3){

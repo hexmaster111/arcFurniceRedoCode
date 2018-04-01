@@ -27,14 +27,16 @@ const int buzzer = 44;
 
 const int statusLED = 13;
 
-float waterTemp = 000.0; //degf
-float crucableTemp = 000.0; //degf
+int waterTemp = 0; //degf
+int crucableTemp = 0; //degf
 float chamberVaccume = 000.0; //mtor
 
-int currentStep = 0; //first step
+int currentStep = 1; //should be zero, set to one for debug
 
 bool estop = true;//Start Estoped
 bool StopPrintedflag = false;
+bool welderOn = false;
+bool watterPumpRunning;
 
 bool debugMode = true; //switch this after wireing and testing
 
@@ -47,8 +49,8 @@ void setup() {
   Serial.print("------ Stared version: ");
   Serial.print(versionNumber);
   Serial.println(" ------");
-  initMessage();
-  tone(buzzer,1000,250);//250 ms?
+  initMessage();//takes to long for debug
+  tone(buzzer,1000,75);
 }
 
 void loop() {
@@ -59,7 +61,8 @@ void loop() {
 void periotics(){
   checkResetEstop();
   eStopCheck();
-  statusDisplay();
+  //statusDisplay();
+  stepsDisplay();
   eStopCheck();
   checkVaccume();
 }

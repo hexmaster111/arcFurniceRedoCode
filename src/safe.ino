@@ -4,7 +4,6 @@
 
 void eStopCheck(){
   statusLight(); //to chaing the statusLED when the estopVar changes
-
   if(digitalRead(estopPin) or (estop == true)){
     //were not estoped
     //estop = false;
@@ -21,6 +20,14 @@ void eStopCheck(){
     estop = true;
     eStopMessage();
   }
+  debugSafty();
+}
+
+void debugSafty(){
+  if (debugMode){
+    digitalWrite(WelderPin    , false);
+    digitalWrite(arcStartPin  , false);
+  }
 }
 
 
@@ -29,6 +36,7 @@ void checkResetEstop(){ //To reset the eStop after pressing
       estop = false;
       resetVars();
       Serial.println("Estop Reset!");
+      tone(buzzer,1000,75);
   }
 }
 
