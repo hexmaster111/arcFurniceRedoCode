@@ -1,5 +1,4 @@
-int pumpDownSteps[] = {1,2,1,2,3};
-int currentStep = 0;
+
 
 void startPumpDown(){
     if (currentStep==0){
@@ -17,10 +16,6 @@ void startPumpDown(){
       Serial.println("at step five");
   }
 }
-
-
-
-
 
 // pumptovaccume = 1  handles when to stop
 // input Argon = 2
@@ -42,6 +37,7 @@ void startPumpDown(){
 // close vaccue pump cut out
 // //at vaccume and clean
 // prompet to start and stop welder and start pumpdown
+
 void PumpLoop(){
   if ((!atVaccume)&&(!estop)){
     relayControl(VaccumePin, true);

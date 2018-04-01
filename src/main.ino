@@ -31,7 +31,7 @@ float waterTemp = 000.0; //degf
 float crucableTemp = 000.0; //degf
 float chamberVaccume = 000.0; //mtor
 
-
+int currentStep = 0; //first step
 
 bool estop = true;//Start Estoped
 bool StopPrintedflag = false;
@@ -48,15 +48,13 @@ void setup() {
   Serial.print(versionNumber);
   Serial.println(" ------");
   initMessage();
-  tone(buzzer,1000,250);
+  tone(buzzer,1000,250);//250 ms?
 }
 
+void loop() {
     periotics();
     startPumpDown(); //called when we want to start pumping down, here for debug
-    void loop() {
 }
-
-
 
 void periotics(){
   checkResetEstop();
