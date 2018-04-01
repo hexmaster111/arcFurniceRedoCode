@@ -2,9 +2,9 @@
 #include <Wire.h>
 #include <LiquidCrystal_PCF8574.h>
 
+//TODO ADD A BUZZER BEFORE THE FLYBACK DRIVER KICKES ON tone( pin number, frequency in hertz);
+
 LiquidCrystal_PCF8574 lcd(0x27);  // set the LCD address
-
-
 
 const int versionNumber = 2;
 
@@ -22,6 +22,8 @@ const int TankVentPin = 26;
 const int PumpCutoutPin = 27;
 const int arcStartPin = 29;
 const int aux = 28;
+
+const int buzzer = 44;
 
 const int statusLED = 13;
 
@@ -46,14 +48,20 @@ void setup() {
   Serial.print(versionNumber);
   Serial.println(" ------");
   initMessage();
-
-
+  tone(buzzer,1000,250);
 }
 
-void loop() {
-    checkResetEstop();
-    eStopCheck();  // This function WORKS!!!
+    periotics();
     startPumpDown(); //called when we want to start pumping down, here for debug
-    //checkRelays();
-    //startPumpDown();
+    void loop() {
+}
+
+
+
+void periotics(){
+  checkResetEstop();
+  eStopCheck();
+  statusDisplay();
+  eStopCheck();
+  checkVaccume();
 }

@@ -3,16 +3,18 @@ int currentStep = 0;
 
 void startPumpDown(){
     if (currentStep==0){
+      Serial.println("At step zero");
       PumpLoop();
     }else if(currentStep==1){
-
+      Serial.println("At step one");
     }else if(currentStep==2){
-
+      Serial.println("at step two");
     }else if(currentStep==3){
-
+      Serial.println("at step three");
     }else if(currentStep==4){
-
+      Serial.println("at step four");
     }else if(currentStep==5){
+      Serial.println("at step five");
   }
 }
 
@@ -40,17 +42,18 @@ void startPumpDown(){
 // close vaccue pump cut out
 // //at vaccume and clean
 // prompet to start and stop welder and start pumpdown
-
 void PumpLoop(){
   if ((!atVaccume)&&(!estop)){
     relayControl(VaccumePin, true);
     relayControl(PumpCutoutPin, true);
-    eStopCheck();
-    checkVaccume();
+    periotics();
     PumpLoop();
+  }else if (atVaccume){
+    relayControl(VaccumePin, false);
+    relayControl(PumpCutoutPin, false);
+    currentStep = currentStep + 1;
   }else{
     relayControl(VaccumePin, false);
     relayControl(PumpCutoutPin, false);
-    loop();
   }
 }
