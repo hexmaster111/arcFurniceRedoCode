@@ -1,8 +1,8 @@
 void statusDisplay(){
   statusBar(0);
-  displayCrusableTemp(1);
-  displayVaccume(2);
-  displayWaterTemp(3);
+  displayWaterTemp(1);
+  displayCrusableTemp(2);
+  displayVaccume(3);
 }
 
 
