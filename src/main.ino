@@ -2,7 +2,7 @@
 #include <Wire.h>
 #include <LiquidCrystal_PCF8574.h>
 
-//TODO ADD A BUZZER BEFORE THE FLYBACK DRIVER KICKES ON tone( pin number, frequency in hertz);
+//TODO ADD A BUZZER BEFORE THE FLYBACK DRIVER KICKES ON
 
 LiquidCrystal_PCF8574 lcd(0x27);  // set the LCD address
 
@@ -56,14 +56,13 @@ void setup() {
 
 void loop() {
     periotics();
-    startPumpDown(); //called when we want to start pumping down, here for debug
+    runLoop();
 }
 
 void periotics(){
   checkResetEstop();
   eStopCheck();
-  //statusDisplay();
-  stepsDisplay();
+  displayStepsmanager();
   eStopCheck();
   checkVaccume();
 }

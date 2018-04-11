@@ -27,9 +27,9 @@ void displayVaccume(int col){
 
 void waitToStartDisplay(){
   lcd.setCursor(4,0);
-  lcd.println("Ready");
+  lcd.print("Ready");
   lcd.setCursor(0,1);
-  lcd.println("Push start to begin");
+  lcd.print("Push start to begin");
 }
 
 void displayTheCurrentStepNumber(int col){
@@ -41,7 +41,7 @@ void displayTheCurrentStepNumber(int col){
 void displayTheCurrentStep(int col){
   lcd.setCursor(0,col);
     if (currentStep==0){
-      waitToStartDisplay();
+      lcd.print("    Wait to start...");
     }else if(currentStep==1){
       lcd.print("PUMPING DOWN        ");
     }else if(currentStep==2){
@@ -107,7 +107,7 @@ void statusBar(int col){
     lcd.print("WE");
   }else{
     lcd.setCursor(18,col);
-    lcd.print("   ");
+    lcd.print("  ");
   }
 
   if (debugMode){

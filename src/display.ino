@@ -12,3 +12,11 @@ void stepsDisplay(){
   displayVaccume(2);
   statusBar(3);
 }
+
+void displayStepsmanager(){
+  if (currentStep == 0){
+    stepsDisplay();
+  }else{
+    statusDisplay();
+  }
+}

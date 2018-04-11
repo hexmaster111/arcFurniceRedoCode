@@ -1,6 +1,6 @@
 
 
-void startPumpDown(){
+void runLoop(){
     if(currentStep==1){
       PumpLoop();
     }else if(currentStep==2){
