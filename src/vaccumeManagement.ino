@@ -6,3 +6,7 @@ void checkVaccume(){
     atVaccume = false;
   }
 }
+
+void getVaccMeasure(){
+  chamberVaccume = 000.0;
+}

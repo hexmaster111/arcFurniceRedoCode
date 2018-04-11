@@ -1,22 +1,24 @@
 
 
 void runLoop(){
-    if(currentStep==1){
-      PumpLoop();
-    }else if(currentStep==2){
-      Serial.println("at step two");
-      inputArgon();
-    }else if(currentStep==3){
-      PumpLoop();
-    }else if(currentStep==4){
-      waitForKey4();
-      Serial.println("waiting for input");
-    }else if(currentStep==5){
-      tone(buzzer,1000,5000);
-      relayControl(WelderPin, true);
+  if(currentStep==1){
+    PumpLoop();
+  }else if(currentStep==2){
+    Serial.println("at step two");
+    inputArgon();
+  }else if(currentStep==3){
+    PumpLoop();
+  }else if(currentStep==4){
+    waitForKey4();
+    Serial.println("waiting for input");
+  }else if(currentStep==5){
+    relayControl(WelderPin, true);
+  }else if(currentStep==6){
+    relayControl(WelderPin, false);
+    relayControl(arcStartPin, false);
+    currentStep = 7;
+  }else if (currentStep==7){
 
-      //weld n' go
-      //Serial.println("at step five");
   }
 }
 
@@ -41,9 +43,15 @@ void runLoop(){
 // //at vaccume and clean
 // prompet to start and stop welder and start pumpdown
 
+void waitForKey5(){
+  if(digitalRead(startKey) and (currentStep == 5)){
+    currentStep = 6;
+  }
+}
+
 void arcHit(){
   relayControl(arcStartPin, true);
-  delay(50)
+  delay(50); //It would be way better to do this without a delay this is kinda touchy
   relayControl(arcStartPin, false);
 }
 

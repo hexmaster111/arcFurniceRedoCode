@@ -1,3 +1,8 @@
+//TODO Vaccume Measurment system
+//TODO Tempature Input System for displaying
+//TODO Add A cool buzzer for the arc stuff
+
+
 #include <Arduino.h>
 #include <Wire.h>
 #include <LiquidCrystal_PCF8574.h>
@@ -9,9 +14,7 @@ const int versionNumber = 2;
 
 const int estopPin = 32;
 const int eStopResetPin = 33;
-
 const int debugKey = 38;
-
 const int startKey = 49;
 
 const int waterPumpPin = 22;
@@ -24,14 +27,13 @@ const int arcStartPin = 29;
 const int aux = 28;
 
 const int buzzer = 44;
-
 const int statusLED = 13;
 
-int waterTemp = 0; //degf
-int crucableTemp = 0; //degf
-float chamberVaccume = 000.0; //mtor
+int waterTemp; //degf
+int crucableTemp; //degf
+float chamberVaccume; //mtor
 
-int currentStep = 0; //should be zero,set for debug
+int currentStep = 0;
 int argonInputTime = 2000;//millisec
 
 bool estop = true;//Start Estoped
