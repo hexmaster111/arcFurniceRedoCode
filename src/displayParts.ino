@@ -51,7 +51,7 @@ void displayTheCurrentStep(int col){
     }else if(currentStep==3){
       lcd.print("PUMPING DOWN        ");
     }else if(currentStep==4){
-      lcd.print("WAITING FOR IN      ");
+      lcd.print("PUSH START TO WELD  ");
     }else if(currentStep==5){
       lcd.print("WELDING             ");
     }

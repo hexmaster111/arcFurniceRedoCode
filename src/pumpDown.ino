@@ -8,10 +8,14 @@ void runLoop(){
       inputArgon();
     }else if(currentStep==3){
       PumpLoop();
-      //Serial.println("at step three");
     }else if(currentStep==4){
-      //Serial.println("at step four");
+      waitForKey4();
+      Serial.println("waiting for input");
     }else if(currentStep==5){
+      tone(buzzer,1000,5000);
+      relayControl(WelderPin, true);
+
+      //weld n' go
       //Serial.println("at step five");
   }
 }
@@ -36,6 +40,18 @@ void runLoop(){
 // close vaccue pump cut out
 // //at vaccume and clean
 // prompet to start and stop welder and start pumpdown
+
+void arcHit(){
+  relayControl(arcStartPin, true);
+  delay(50)
+  relayControl(arcStartPin, false);
+}
+
+void waitForKey4(){
+  if(digitalRead(startKey) and (currentStep == 4)){
+    currentStep = 5;
+  }
+}
 
 void PumpLoop(){
   if ((!atVaccume)&&(!estop)){
