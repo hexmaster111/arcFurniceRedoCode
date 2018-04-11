@@ -1,4 +1,8 @@
-
+void waitToStart(){
+  if(digitalRead(startKey) and (currentStep == 0)){
+    currentStep = 1;
+  }
+}
 
 void relayControl(int pin,bool opp){
   if (!digitalRead(pin) && (opp) && (!estop)){ // if pin low and opp high

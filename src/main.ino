@@ -13,6 +13,7 @@ const int eStopResetPin = 33;
 
 const int debugKey = 38;
 
+const int startKey = 49;
 
 const int waterPumpPin = 22;
 const int ArgonPin = 23;
@@ -31,7 +32,7 @@ int waterTemp = 0; //degf
 int crucableTemp = 0; //degf
 float chamberVaccume = 000.0; //mtor
 
-int currentStep = 1; //should be zero,set for debug
+int currentStep = 0; //should be zero,set for debug
 int argonInputTime = 2000;//millisec
 
 bool estop = true;//Start Estoped
@@ -49,9 +50,6 @@ void setup() {
   Serial.begin(9600);
   lcdSetUp();
   pinSetup();
-  Serial.print("------ Stared version: ");
-  Serial.print(versionNumber);
-  Serial.println(" ------");
   initMessage();
   tone(buzzer,1000,75);
 }
