@@ -1,4 +1,10 @@
 
+void waitToStart(){
+  if(digitalRead(startKey) and (currentStep == 0)){
+    currentStep = 1;
+  }
+}
+
 
 void startPumpDown(){
     if(currentStep==1){
