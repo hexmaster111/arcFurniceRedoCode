@@ -1,22 +1,18 @@
 
-void waitToStart(){
-  if(digitalRead(startKey) and (currentStep == 0)){
-    currentStep = 1;
-  }
-}
-
 
 void startPumpDown(){
     if(currentStep==1){
       PumpLoop();
     }else if(currentStep==2){
       Serial.println("at step two");
+      inputArgon();
     }else if(currentStep==3){
-      Serial.println("at step three");
+      PumpLoop();
+      //Serial.println("at step three");
     }else if(currentStep==4){
-      Serial.println("at step four");
+      //Serial.println("at step four");
     }else if(currentStep==5){
-      Serial.println("at step five");
+      //Serial.println("at step five");
   }
 }
 
@@ -55,4 +51,16 @@ void PumpLoop(){
     relayControl(VaccumePin, false);
     relayControl(PumpCutoutPin, false);
   }
+}
+
+void inputArgon(){
+  starttime = millis();
+  endtime = starttime;
+  while (((endtime - starttime) <=argonInputTime) && currentStep == 2){
+    relayControl(ArgonPin, true);
+    endtime = millis();
+    periotics();
+  }
+  relayControl(ArgonPin, false);
+  currentStep = currentStep + 1;
 }

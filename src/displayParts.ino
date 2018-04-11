@@ -25,13 +25,6 @@ void displayVaccume(int col){
   lcd.print("InHg");
 }
 
-void waitToStartDisplay(){
-  lcd.setCursor(4,0);
-  lcd.println("Ready");
-  lcd.setCursor(0,1);
-  lcd.println("Push start to begin");
-}
-
 void displayTheCurrentStepNumber(int col){
   lcd.setCursor(0,col);
   lcd.print("Current Step:");
@@ -41,25 +34,24 @@ void displayTheCurrentStepNumber(int col){
 void displayTheCurrentStep(int col){
   lcd.setCursor(0,col);
     if (currentStep==0){
-      waitToStartDisplay();
+      lcd.print("WAITING TO START... ");
     }else if(currentStep==1){
-      lcd.print("PUMPING DOWN  ");
+      lcd.print("PUMPING DOWN        ");
     }else if(currentStep==2){
-      lcd.print("ARGON INPUT   ");
+      lcd.print("ARGON INPUT         ");
+      lcd.setCursor(12,col);
+      lcd.print(endtime - starttime);
     }else if(currentStep==3){
-      lcd.print("PUMPING DOWN  ");
+      lcd.print("PUMPING DOWN        ");
     }else if(currentStep==4){
-      lcd.print("WAITING FOR IN");
+      lcd.print("WAITING FOR IN      ");
     }else if(currentStep==5){
-      lcd.print("WELDING       ");
+      lcd.print("WELDING             ");
     }
 }
 
 
 void initMessage(){
-  Serial.print("------ Stared version: ");
-  Serial.print(versionNumber);
-  Serial.println(" ------");
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("ARC Control");
@@ -80,7 +72,7 @@ void statusBar(int col){
     lcd.setCursor(6,col);
     lcd.print("WPUMP|");
   } else {
-    lcd.setCursor(6,col);
+    lcd.setCursor(6,3);
     lcd.print("     |");
   }
 
@@ -116,3 +108,15 @@ void statusBar(int col){
     lcd.print("  ");
   }
 }
+
+
+
+// void eStopDisplay(){
+//   if (estop){
+//     lcd.setCursor(0,3);
+//     lcd.print("ESTOP|");
+//   }else{
+//     lcd.setCursor(0,3);
+//     lcd.print("     |");
+//   }
+// }

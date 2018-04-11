@@ -19,6 +19,7 @@ void eStopCheck(){
     digitalWrite(aux          , false);
     estop = true;
     eStopMessage();
+    currentStep = 0;
   }
   debugSafty();
 }
